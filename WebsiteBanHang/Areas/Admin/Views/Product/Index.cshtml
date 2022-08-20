@@ -9,17 +9,18 @@
 
 <p>
     @Html.ActionLink("Tạo mới", "Create")
+  
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            <strong>Tên sản phẩm</strong>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Avatar)
+            <strong>Hình ảnh</strong>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            <strong>Danh mục sản phẩm</strong>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TypeId)
@@ -61,11 +62,13 @@
     </tr>
 
 @foreach (var item in Model) {
+
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
+            <img src="~/Content/images/items/@Html.DisplayFor(modelItem => item.Avatar)" style="width:100px;height:100px" />
             @Html.DisplayFor(modelItem => item.Avatar)
         </td>
         <td>

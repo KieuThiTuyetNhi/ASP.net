@@ -12,13 +12,13 @@ namespace WebsiteBanHang.Controllers
         public ActionResult Detail(int Id)
         {
 
-            var objProduct = objQuanLyBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
+            var objProduct = objQuanLyBanHangEntities.Category.Where(n => n.Id == Id).FirstOrDefault();
 
             return View(objProduct);
         }
         public ActionResult ProInCat(int ID)
         {
-            var get = objQuanLyBanHangEntities.Products.Where(s => s.CategoryId == ID).ToList();
+            var get = objQuanLyBanHangEntities.Category.Where(s => s.CategoryId == ID).ToList();
             return View(get);
         }
     }

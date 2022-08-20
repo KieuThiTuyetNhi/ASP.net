@@ -17,7 +17,7 @@ namespace WebsiteBanHang.Controllers
         {
             HomeModel objHomeModel = new HomeModel();
             objHomeModel.ListCategory = objQuanLyBanHangEntities.Categories.ToList();
-            objHomeModel.ListProduct = objQuanLyBanHangEntities.Products.ToList();
+            objHomeModel.ListProduct = objQuanLyBanHangEntities.Category.ToList();
             return View(objHomeModel);
         }
 

@@ -72,5 +72,20 @@
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Brands" EntityType="QuanLyBanHangModel.Brand" />
   </EntityContainer>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ShowOnHomePage" Type="Boolean" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="Deleted" Type="Boolean" />
+  </EntityType>
 </Schema>

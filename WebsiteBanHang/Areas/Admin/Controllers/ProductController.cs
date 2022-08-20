@@ -20,13 +20,13 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/Product
         public ActionResult Index()
         {
-            var lstProduct = objQuanLyBanHangEntities.Products.ToList();
+            var lstProduct = objQuanLyBanHangEntities.Category.ToList();
 
             return View(lstProduct);
         }
         public ActionResult Details (int Id)
         {
-            var objProduct = objQuanLyBanHangEntities.Products. Where(n=>n.Id== Id).FirstOrDefault();
+            var objProduct = objQuanLyBanHangEntities.Category. Where(n=>n.Id== Id).FirstOrDefault();
             return View(objProduct);
         }
         void LoadData()
@@ -40,10 +40,10 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             ViewBag.ListCategory = objCommon.ToSelectList(dtCategory, "Id", "Name");
 
             //// lấy dữ diệu thương hiệu dưới db
-            //var lstBrand = objQuanLyBanHangEntities.Brands.ToList();
-            //DataTable dtBrand = converter.ToDataTable(lstBrand);
-            ////convert sang select list dang value, text
-            //ViewBag.ListBrand = objCommon.ToSelectList(dtBrand, "Id", "Name");
+            var lstBrand = objQuanLyBanHangEntities.Brands.ToList();
+            DataTable dtBrand = converter.ToDataTable(lstBrand);
+            //convert sang select list dang value, text
+            ViewBag.ListBrand = objCommon.ToSelectList(dtBrand, "Id", "Name");
 
             //typeid
             List<ProductType> lstProductType = new List<ProductType>();
@@ -97,7 +97,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
                         objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
                     }
                     objProduct.CreatedOnUtc = DateTime.Now;
-                    objQuanLyBanHangEntities.Products.Add(objProduct);
+                    objQuanLyBanHangEntities.Category.Add(objProduct);
                     objQuanLyBanHangEntities.SaveChanges();
 
 
@@ -114,14 +114,14 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int Id)
         {
-            var objProduct = objQuanLyBanHangEntities.Products.Where(n => n.Id== Id).FirstOrDefault();
+            var objProduct = objQuanLyBanHangEntities.Category.Where(n => n.Id== Id).FirstOrDefault();
             return View(objProduct);
         }
         [HttpPost]
         public ActionResult Delete(Product objPro)
         {
-            var objProduct = objQuanLyBanHangEntities.Products.Where(n => n.Id== objPro.Id).FirstOrDefault();
-            objQuanLyBanHangEntities.Products.Remove(objProduct);
+            var objProduct = objQuanLyBanHangEntities.Category.Where(n => n.Id== objPro.Id).FirstOrDefault();
+            objQuanLyBanHangEntities.Category.Remove(objProduct);
             objQuanLyBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -129,7 +129,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             this.LoadData();
-            var product = objQuanLyBanHangEntities.Products.Where(n => n.Id == id).FirstOrDefault();
+            var product = objQuanLyBanHangEntities.Category.Where(n => n.Id == id).FirstOrDefault();
             return View(product);
         }
 

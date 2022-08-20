@@ -81,3 +81,7 @@ D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.SqlServer.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.xml
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.SqlServer.xml
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.Mvc.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.xml
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.Mvc.xml

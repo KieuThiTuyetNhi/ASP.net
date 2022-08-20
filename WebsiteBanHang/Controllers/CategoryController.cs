@@ -20,7 +20,7 @@ namespace WebsiteBanHang.Controllers
         public ActionResult ProductCategory (int Id)
         {
             HomeModel objhomemodel = new HomeModel();
-            objhomemodel.ListProduct = objQuanLyBanHangEntities.Products.Where(n => n.CategoryId==Id).ToList();
+            objhomemodel.ListProduct = objQuanLyBanHangEntities.Category.Where(n => n.CategoryId==Id).ToList();
             objhomemodel.ListCategory =objQuanLyBanHangEntities.Categories.ToList();
 
            
