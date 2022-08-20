@@ -16,5 +16,10 @@ namespace WebsiteBanHang.Controllers
 
             return View(objProduct);
         }
+        public ActionResult ProInCat(int ID)
+        {
+            var get = objQuanLyBanHangEntities.Products.Where(s => s.CategoryId == ID).ToList();
+            return View(get);
+        }
     }
 }

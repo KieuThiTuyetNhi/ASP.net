@@ -5,6 +5,7 @@ using System.Web;
 using WebsiteBanHang.Context;
 
 namespace WebsiteBanHang.Models
+
 {
     public class HomeModel
     {
