@@ -135,10 +135,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\objProduct.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Context\Brand.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
@@ -180,6 +182,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandMasterData.cs" />
+    <Compile Include="Models\CategoryMasterData.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PartialMetadataPyte.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
@@ -4155,23 +4159,38 @@
     <Content Include="Content\images\icons\pay-visa.png" />
     <Content Include="Content\images\icons\stars-active.svg" />
     <Content Include="Content\images\icons\starts-disable.svg" />
-    <Content Include="Content\images\items\1.jpg" />
-    <Content Include="Content\images\items\10.jpg" />
-    <Content Include="Content\images\items\11.jpg" />
-    <Content Include="Content\images\items\12.jpg" />
-    <Content Include="Content\images\items\13.jpg" />
-    <Content Include="Content\images\items\14.jpg" />
-    <Content Include="Content\images\items\15-1.jpg" />
-    <Content Include="Content\images\items\15-2.jpg" />
-    <Content Include="Content\images\items\15.jpg" />
-    <Content Include="Content\images\items\2.jpg" />
-    <Content Include="Content\images\items\3.jpg" />
-    <Content Include="Content\images\items\4.jpg" />
-    <Content Include="Content\images\items\5.jpg" />
-    <Content Include="Content\images\items\6.jpg" />
-    <Content Include="Content\images\items\7.jpg" />
-    <Content Include="Content\images\items\8.jpg" />
-    <Content Include="Content\images\items\9.jpg" />
+    <Content Include="Content\images\items\hoa 12.png" />
+    <Content Include="Content\images\items\hoa 16.png" />
+    <Content Include="Content\images\items\hoa1.png" />
+    <Content Include="Content\images\items\hoa10.png" />
+    <Content Include="Content\images\items\hoa11.png" />
+    <Content Include="Content\images\items\hoa13.png" />
+    <Content Include="Content\images\items\hoa14.png" />
+    <Content Include="Content\images\items\hoa15.png" />
+    <Content Include="Content\images\items\hoa17.png" />
+    <Content Include="Content\images\items\hoa2.png" />
+    <Content Include="Content\images\items\hoa3.png" />
+    <Content Include="Content\images\items\hoa4.png" />
+    <Content Include="Content\images\items\hoa5.png" />
+    <Content Include="Content\images\items\hoa6.png" />
+    <Content Include="Content\images\items\hoa7.png" />
+    <Content Include="Content\images\items\hoa8.png" />
+    <Content Include="Content\images\items\hoa9.png" />
+    <Content Include="Content\images\items\son1.png" />
+    <Content Include="Content\images\items\son10.png" />
+    <Content Include="Content\images\items\son11.png" />
+    <Content Include="Content\images\items\son12.png" />
+    <Content Include="Content\images\items\son13.png" />
+    <Content Include="Content\images\items\son14.png" />
+    <Content Include="Content\images\items\son2.png" />
+    <Content Include="Content\images\items\son3.png" />
+    <Content Include="Content\images\items\son4.png" />
+    <Content Include="Content\images\items\son5.png" />
+    <Content Include="Content\images\items\son6.png" />
+    <Content Include="Content\images\items\son7 %282%29.png" />
+    <Content Include="Content\images\items\son7.png" />
+    <Content Include="Content\images\items\son8.png" />
+    <Content Include="Content\images\items\son9.png" />
     <Content Include="Content\images\logo-white.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo.svg" />
@@ -4187,8 +4206,8 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Context\dbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
       <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Context\dbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -4226,7 +4245,6 @@
     <Content Include="Content\images\.DS_Store" />
     <Content Include="Content\images\banners\.DS_Store" />
     <Content Include="Content\images\icons\.DS_Store" />
-    <Content Include="Content\images\items\.DS_Store" />
     <Content Include="Content\images\posts\.DS_Store" />
     <Content Include="fonts\fonts\fontawesome\.DS_Store" />
     <Content Include="fonts\fonts\fontawesome\webfonts\fa-brands-400.eot" />
@@ -4409,16 +4427,6 @@
     <Content Include="Areas\Admin\plugins\summernote\summernote.js.map" />
     <Content Include="Areas\Admin\plugins\summernote\summernote.min.js.map" />
     <Content Include="Areas\Admin\plugins\toastr\toastr.js.map" />
-    <EntityDeploy Include="Context\dbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Context\dbModel.edmx.diagram">
-      <DependentUpon>dbModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Scripts\ckeditor\bender-runner.config.json" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
@@ -4513,11 +4521,28 @@
     <Content Include="Content\admin\plugins\summernote\summernote.js.map" />
     <Content Include="Content\admin\plugins\summernote\summernote.min.js.map" />
     <Content Include="Content\admin\plugins\toastr\toastr.js.map" />
+    <EntityDeploy Include="Context\dbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Context\dbModel.edmx.diagram">
+      <DependentUpon>dbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Edits.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -4862,10 +4887,16 @@
     <Content Include="Views\Category\ProductCategory.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -8,18 +8,14 @@ namespace WebsiteBanHang.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-        QuanLyBanHangEntities objQuanLyBanHangEntities = new QuanLyBanHangEntities();
+        QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities();
         public ActionResult Detail(int Id)
         {
 
-            var objProduct = objQuanLyBanHangEntities.Category.Where(n => n.Id == Id).FirstOrDefault();
+            var objProduct = objQuanLyBanHangEntities.Products.Where(n => n.Id == Id).FirstOrDefault();
 
             return View(objProduct);
         }
-        public ActionResult ProInCat(int ID)
-        {
-            var get = objQuanLyBanHangEntities.Category.Where(s => s.CategoryId == ID).ToList();
-            return View(get);
-        }
+      
     }
 }

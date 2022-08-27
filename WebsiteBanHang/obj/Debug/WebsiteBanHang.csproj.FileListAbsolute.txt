@@ -51,9 +51,13 @@ D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\roslyn\vbc.rsp
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\roslyn\VBCSCompiler.exe
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\roslyn\VBCSCompiler.exe.config
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\Antlr3.Runtime.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.SqlServer.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\Microsoft.Web.Infrastructure.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\Newtonsoft.Json.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.Mvc.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.Helpers.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.Mvc.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.Optimization.dll
@@ -62,6 +66,10 @@ D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.WebPages.Deployment.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.WebPages.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.WebPages.Razor.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\WebGrease.dll
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.xml
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.SqlServer.xml
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.xml
+D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.Mvc.xml
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.Helpers.xml
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.Mvc.xml
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\System.Web.Optimization.xml
@@ -77,11 +85,3 @@ D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\obj\Debug\WebsiteBanHang.csproj.CoreCom
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\obj\Debug\WebsiteBanHang.csproj.CopyComplete
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\obj\Debug\WebsiteBanHang.dll
 D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\obj\Debug\WebsiteBanHang.pdb
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.dll
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.SqlServer.dll
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.xml
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\EntityFramework.SqlServer.xml
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.dll
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.Mvc.dll
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.xml
-D:\ASP.NET\WebsiteBanHang\WebsiteBanHang\bin\PagedList.Mvc.xml

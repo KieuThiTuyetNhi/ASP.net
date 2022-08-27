@@ -15,8 +15,8 @@ namespace WebsiteBanHang.Context
     public partial class OrderDetail
     {
         public int Id { get; set; }
-        public Nullable<int> Orderld { get; set; }
-        public Nullable<int> Productld { get; set; }
+        public Nullable<int> OrderId { get; set; }
+        public Nullable<int> ProductId { get; set; }
         public Nullable<int> Quantity { get; set; }
     }
 }

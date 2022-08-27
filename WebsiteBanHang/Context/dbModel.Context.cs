@@ -13,10 +13,10 @@ namespace WebsiteBanHang.Context
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuanLyBanHangEntities : DbContext
+    public partial class QLBanHangEntities : DbContext
     {
-        public QuanLyBanHangEntities()
-            : base("name=QuanLyBanHangEntities")
+        public QLBanHangEntities()
+            : base("name=QLBanHangEntities")
         {
         }
     
@@ -25,11 +25,11 @@ namespace WebsiteBanHang.Context
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Product> Category { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Brand> Brands { get; set; }
     }
 }

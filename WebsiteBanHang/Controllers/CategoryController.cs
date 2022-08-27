@@ -9,7 +9,7 @@ namespace WebsiteBanHang.Controllers
 {
     public class CategoryController : Controller
     {
-        QuanLyBanHangEntities objQuanLyBanHangEntities = new QuanLyBanHangEntities();
+        QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities();
         // GET: Category
         public ActionResult Index()
         {
@@ -20,7 +20,7 @@ namespace WebsiteBanHang.Controllers
         public ActionResult ProductCategory (int Id)
         {
             HomeModel objhomemodel = new HomeModel();
-            objhomemodel.ListProduct = objQuanLyBanHangEntities.Category.Where(n => n.CategoryId==Id).ToList();
+            objhomemodel.ListProduct = objQuanLyBanHangEntities.Products.Where(n => n.CategoryId==Id).ToList();
             objhomemodel.ListCategory =objQuanLyBanHangEntities.Categories.ToList();
 
            

@@ -11,5 +11,6 @@ namespace WebsiteBanHang.Models
     {
         public List<Product> ListProduct { get; set; }
         public List<Category> ListCategory { get; set; }
+        public List<User> ListUser { get; internal set; }
     }
 }

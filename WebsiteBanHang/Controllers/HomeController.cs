@@ -12,12 +12,13 @@ namespace WebsiteBanHang.Controllers
 {
     public class HomeController : Controller
     {
-        QuanLyBanHangEntities objQuanLyBanHangEntities = new QuanLyBanHangEntities();
+        QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities(); 
+
         public ActionResult Index()
         {
             HomeModel objHomeModel = new HomeModel();
             objHomeModel.ListCategory = objQuanLyBanHangEntities.Categories.ToList();
-            objHomeModel.ListProduct = objQuanLyBanHangEntities.Category.ToList();
+            objHomeModel.ListProduct = objQuanLyBanHangEntities.Products.ToList();
             return View(objHomeModel);
         }
 

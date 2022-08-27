@@ -1,25 +1,26 @@
-﻿
+﻿using PagedList;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.Context;
-using WebsiteBanHang;
 using static WebsiteBanHang.Common;
-using PagedList;
 
-namespace asp_Le_Thi_Thanh_Thao.Areas.Admin.Controllers
+namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        QuanLyBanHangEntities objQuanLyBanHangEntities = new QuanLyBanHangEntities();
-        // GET: Admin/Category
+        // GET: Admin/Product
+        QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities();
+
+       
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
+
             var lstCategory = new List<Category>();
             if (SearchString != null)
             {
@@ -43,93 +44,102 @@ namespace asp_Le_Thi_Thanh_Thao.Areas.Admin.Controllers
             lstCategory = lstCategory.OrderByDescending(n => n.Id).ToList();
             return View(lstCategory.ToPagedList(pageNumber, pageSize));
         }
-
-
-
         void LoadData()
         {
-
             Common objCommon = new Common();
-
+            // lấy dữ liệu dưới db
             var lstCat = objQuanLyBanHangEntities.Categories.ToList();
-
+            //convert  sang select list dạng value,text
             ListtoDataTableConverter converter = new ListtoDataTableConverter();
             DataTable dtCategory = converter.ToDataTable(lstCat);
             ViewBag.ListCategory = objCommon.ToSelectList(dtCategory, "Id", "Name");
+            // lấy dữ diệu thương hiệu dưới db
+            var lstBrand = objQuanLyBanHangEntities.Brands.ToList();
+            DataTable dtBrand = converter.ToDataTable(lstBrand);
+            //convert sang select list dang value, text
+            ViewBag.ListBrand = objCommon.ToSelectList(dtBrand, "Id", "Name");
+            //typeoid
+            List<ProductType> lstProductType = new List<ProductType>();
+            ProductType objProductType = new ProductType();
+            objProductType.Id = 01;
+            objProductType.Name = "Giảm giá sốc";
+            lstProductType.Add(objProductType);
 
-            List<CategoryType> lstCategoryType = new List<CategoryType>();
-            CategoryType objCategoryType = new CategoryType();
-            objCategoryType.Id = 1;
-            objCategoryType.Name = "Danh mục phổ biến";
-            lstCategoryType.Add(objCategoryType);
+            objProductType = new ProductType();
+            objProductType.Id = 02;
+            objProductType.Name = "Đề xuất";
+            lstProductType.Add(objProductType);
 
 
 
-            DataTable dtCategoryType = converter.ToDataTable(lstCategoryType);
-            ViewBag.CategoryType = objCommon.ToSelectList(dtCategoryType, "Id", "Name");
+            DataTable dtProductType = converter.ToDataTable(lstProductType);
+            ViewBag.ProductType = objCommon.ToSelectList(dtProductType, "Id", "Name");
+
+
         }
         [HttpGet]
         public ActionResult Create()
         {
-            //lay du lieu
             this.LoadData();
             return View();
-        }
 
+        }
+        // sua loi sckeditorjs
+        [ValidateInput(false)]
+        //end
         [HttpPost]
         public ActionResult Create(Category objCategory)
         {
             this.LoadData();
+
             if (ModelState.IsValid)
             {
                 try
                 {
-
                     if (objCategory.ImageUpload != null)
                     {
                         string fileName = Path.GetFileNameWithoutExtension(objCategory.ImageUpload.FileName);
-                        //tenhinh
                         string extension = Path.GetExtension(objCategory.ImageUpload.FileName);
-                        //png
                         fileName = fileName + extension;
-                        //tenhinh.png
                         objCategory.Avatar = fileName;
-                        objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                        objCategory.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
                     }
                     objCategory.CreatedOnUtc = DateTime.Now;
                     objQuanLyBanHangEntities.Categories.Add(objCategory);
                     objQuanLyBanHangEntities.SaveChanges();
 
-                    return RedirectToAction("Index");
-                }
 
+                    return RedirectToAction("Index");
+
+                }
                 catch
                 {
                     return View(objCategory);
                 }
-
             }
             return View(objCategory);
         }
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == id).FirstOrDefault();
-            return View(objCategory);
-        }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Details(int Id)
         {
-            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == id).FirstOrDefault();
+            this.LoadData();
+            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == Id).FirstOrDefault();
             return View(objCategory);
         }
+        [HttpGet]
+        public ActionResult Delete(int Id)
+        {
 
+            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == Id).FirstOrDefault();
+
+            return View(objCategory);
+        }
         [HttpPost]
-        public ActionResult Delete(Product objcat)
+        public ActionResult Delete(Category objc)
         {
-            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == objcat.Id).FirstOrDefault();
 
+            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == objc.Id).FirstOrDefault();
             objQuanLyBanHangEntities.Categories.Remove(objCategory);
             objQuanLyBanHangEntities.SaveChanges();
             return RedirectToAction("Index");
@@ -137,23 +147,38 @@ namespace asp_Le_Thi_Thanh_Thao.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var objCategory = objQuanLyBanHangEntities.Categories.Where(n => n.Id == id).FirstOrDefault();
-            return View(objCategory);
+            this.LoadData();
+            var product = objQuanLyBanHangEntities.Products.Where(n => n.Id == id).FirstOrDefault();
+            return View(product);
         }
-        public ActionResult Edit(int id, Product objCategory)
+
+        [HttpPost, ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Product objProduct, FormCollection form)
         {
-            if (objCategory.ImageUpload != null)
+            this.LoadData();
+            if (objProduct.ImageUpload != null)
             {
-                string fileName = Path.GetFileNameWithoutExtension(objCategory.ImageUpload.FileName);
-                //tenhinh
-                string extension = Path.GetExtension(objCategory.ImageUpload.FileName);
-                //png
-                fileName = fileName + extension;
-                //tenhinh.png
-                objCategory.Avatar = fileName;
+                string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
+                string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
+                fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
+                objProduct.Avatar = fileName;
+                objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
             }
-            objQuanLyBanHangEntities.Entry(objCategory).State = EntityState.Modified;
+            else
+            {
+                objProduct.Avatar = form["oldimage"];
+                objQuanLyBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+                objProduct.UpdatedOnUtc = DateTime.Now;
+                objQuanLyBanHangEntities.SaveChanges();
+
+
+            }
+            objQuanLyBanHangEntities.Entry(objProduct).State = EntityState.Modified;
+            objProduct.UpdatedOnUtc = DateTime.Now;
             objQuanLyBanHangEntities.SaveChanges();
+
+
             return RedirectToAction("Index");
         }
     }
