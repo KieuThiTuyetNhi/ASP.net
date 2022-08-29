@@ -17,7 +17,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/Product
         QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities();
 
-       
+
         public ActionResult Index(string currentFilter, string SearchString, int? page)
         {
 
@@ -145,41 +145,34 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            this.LoadData();
-            var product = objQuanLyBanHangEntities.Products.Where(n => n.Id == id).FirstOrDefault();
-            return View(product);
+            //this.loadData();
+            var objCate = objQuanLyBanHangEntities.Categories.Where(n => n.Id == Id).FirstOrDefault();
+            return View(objCate);
         }
-
-        [HttpPost, ValidateInput(false)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product objProduct, FormCollection form)
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult Edit(Category category)
         {
-            this.LoadData();
-            if (objProduct.ImageUpload != null)
+            //this.loadData();
+            if (category.ImageUpload != null)
             {
-                string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
-                string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
-                objProduct.Avatar = fileName;
-                objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
+                string fileName = Path.GetFileNameWithoutExtension(category.ImageUpload.FileName);
+                //tenhinh
+                string extension = Path.GetExtension(category.ImageUpload.FileName);
+                //png
+                fileName = fileName + extension;
+                //tenhinh.png
+                category.Avatar = fileName;
+                category.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/category"), fileName));
             }
-            else
-            {
-                objProduct.Avatar = form["oldimage"];
-                objQuanLyBanHangEntities.Entry(objProduct).State = EntityState.Modified;
-                objProduct.UpdatedOnUtc = DateTime.Now;
-                objQuanLyBanHangEntities.SaveChanges();
 
-
-            }
-            objQuanLyBanHangEntities.Entry(objProduct).State = EntityState.Modified;
-            objProduct.UpdatedOnUtc = DateTime.Now;
+            category.UpdatedOnUtc = DateTime.Now;
+            objQuanLyBanHangEntities.Entry(category).State = EntityState.Modified;
             objQuanLyBanHangEntities.SaveChanges();
-
-
             return RedirectToAction("Index");
         }
     }
+
 }

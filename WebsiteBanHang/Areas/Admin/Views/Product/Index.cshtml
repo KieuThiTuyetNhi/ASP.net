@@ -7,7 +7,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-success">Quản lí sản phẩm</h2>
 
 <p>
     @Html.ActionLink("Thêm mới", "Create")
@@ -19,8 +19,8 @@
         <input type="submit" class="btn btn-sm btn-outline-primary " value="Tìm kiếm" />
     </p>
 }
-<table class="table">
-    <tr>
+<table class="table" >
+    <tr style="background-color: #ffb3ff">
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
         </th>
@@ -77,12 +77,13 @@
                 @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <a href="@Url.Action("Edit","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-edit text-white"></i></a>
+                <a href="@Url.Action("Details","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-eye text-white"></i></a>
+                <a href="@Url.Action("Delete","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-trash-alt text-white"></i></a>
             </td>
         </tr>
     }
+
 
 </table>
 <div class="text-center">

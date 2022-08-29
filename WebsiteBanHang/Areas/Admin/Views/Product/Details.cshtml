@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Xem chi tiết sản phẩm</h2>
 
 <div>
-    <h4>Product</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -64,7 +64,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FullDescription)
+            @Html.Raw(Model.FullDescription)
         </dd>
 
         <dt>
@@ -83,21 +83,9 @@
             @Html.DisplayFor(model => model.PriceDiscount)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
+      
 
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deleted)
-        </dd>
+      
 
         <dt>
             @Html.DisplayNameFor(model => model.ShowOnHomePage)
@@ -134,6 +122,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cập nhật", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Trở về", "Index")
 </p>

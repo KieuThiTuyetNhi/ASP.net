@@ -12,7 +12,7 @@ namespace WebsiteBanHang.Controllers
 {
     public class HomeController : Controller
     {
-        QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities(); 
+        QLBanHangEntities objQuanLyBanHangEntities = new QLBanHangEntities();
 
         public ActionResult Index()
         {
@@ -22,12 +22,12 @@ namespace WebsiteBanHang.Controllers
             return View(objHomeModel);
         }
 
-        public ActionResult About()  
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
-        }   
+        }
 
         public ActionResult Contact()
         {
@@ -36,36 +36,7 @@ namespace WebsiteBanHang.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
-        public ActionResult Register(User _user)
-        {
-            if (ModelState.IsValid)
-            {
-                var check = objQuanLyBanHangEntities.Users.FirstOrDefault(s => s.Email == _user.Email);
-                if (check == null)
-                {
-                    _user.Password = GetMD5(_user.Password);
-                    objQuanLyBanHangEntities.Configuration.ValidateOnSaveEnabled = false;
-                    objQuanLyBanHangEntities.Users.Add(_user);
-                    objQuanLyBanHangEntities.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewBag.error = "Email already exists";
-                    return View();
-                }
-
-
-            }
-            return View();
-
-
-            }
-        [HttpGet]
+        //Login
         public ActionResult Login()
         {
             return View();
@@ -97,31 +68,32 @@ namespace WebsiteBanHang.Controllers
             }
             return View();
         }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
         //Logout
         public ActionResult Logout()
         {
             Session.Clear();//remove session
             return RedirectToAction("Login");
         }
-        //create a string MD5
+
         public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
             {
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] fromData = Encoding.UTF8.GetBytes(str);
-                byte[] targetData = md5.ComputeHash(fromData);
-                string byte2String = null;
-
-                for (int i = 0; i < targetData.Length; i++)
-                {
-                    byte2String += targetData[i].ToString("x2");
-
-                }
-                return byte2String;
-            
-
+                byte2String += targetData[i].ToString("x2");
 
             }
-
-
+            return byte2String;
+        }
     }
 }

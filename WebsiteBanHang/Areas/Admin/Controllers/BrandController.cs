@@ -155,7 +155,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edits(Brand objBrand, FormCollection form)
         {
-            this.LoadData();
+            
             if (objBrand.ImageUpload != null)
             {
                 string fileName = Path.GetFileNameWithoutExtension(objBrand.ImageUpload.FileName);
@@ -167,14 +167,14 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             else
             {
                 objBrand.Avatar = form["oldimage"];
-               // objQuanLyBanHangEntities.Entry(objBrand).State = EntityState.Modified;
-                objBrand.UpdatedOnUtc = DateTime.Now;
+                objQuanLyBanHangEntities.Entry(objBrand).State = EntityState.Modified;
+                objBrand.UpdateOnUtc = DateTime.Now;
                 objQuanLyBanHangEntities.SaveChanges();
 
 
             }
-            //objQuanLyBanHangEntities.Entry(objBrand).State = EntityState.Modified;
-            objBrand.UpdatedOnUtc = DateTime.Now;
+            objQuanLyBanHangEntities.Entry(objBrand).State = EntityState.Modified;
+            objBrand.UpdateOnUtc = DateTime.Now;
             objQuanLyBanHangEntities.SaveChanges();
 
 

@@ -7,12 +7,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Quản lý loại sản phẩm</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới", "Create")
 </p>
-@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+@using (Html.BeginForm("Index", "Category", FormMethod.Get))
 {
     <p>
         Tìm sản phẩm:&nbsp @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @placeholder = "Nhập tên sản phẩm" })
@@ -28,21 +28,21 @@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Avatar)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().IsPopular)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Slug)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().ShowOnHomePage)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().DisplayOrder)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().Deleted)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedOnUtc)
         </th>
@@ -59,23 +59,23 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Avatar)
+                <img src="~/Content/images/items/@Html.DisplayFor(modelItem => item.Avatar)" style="width:100px;height:100px" />
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.IsPopular)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Slug)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ShowOnHomePage)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.DisplayOrder)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Deleted)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedOnUtc)
             </td>
@@ -83,10 +83,11 @@
                 @Html.DisplayFor(modelItem => item.UpdatedOnUtc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+                <a href="@Url.Action("Edit","Category",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-edit text-white"></i></a>
+                <a href="@Url.Action("Details","Category",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-eye text-white"></i></a>
+                <a href="@Url.Action("Delete","Category",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-trash-alt text-white"></i></a>
+           
+        </td>
         </tr>
     }
 

@@ -10,7 +10,7 @@ namespace WebsiteBanHang.Context
     [MetadataType(typeof(UserMasterData))]
     public partial class User
     {
-        public int UserId { get; internal set; }
+
     }
     [MetadataType(typeof(ProductMasterData))]
     public partial class Product
@@ -33,7 +33,7 @@ namespace WebsiteBanHang.Context
         [NotMapped]
 
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }
-        public DateTime UpdatedOnUtc { get; internal set; }
+     
     }
 
 
